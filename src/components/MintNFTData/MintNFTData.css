@@ -1,0 +1,27 @@
+.generalbox {
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em;
+  color: white;
+}
+
+.optionsContainer {
+  display: flex;
+  color: white;
+  text-align: center;
+}
+
+.imagenesToMint {
+  width: 20vw;
+  height: 20vh;
+  margin-right: 1em;
+}
+
+.textOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
