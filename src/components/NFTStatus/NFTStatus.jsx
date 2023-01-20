@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 export default function NFTStatus({ id }) {
   const [estado, setEstado] = useState(null);
+  const [retry, setRetry] = useState(true);
 
   useEffect(() => {
     const options = {
@@ -16,9 +17,12 @@ export default function NFTStatus({ id }) {
 
     fetch("https://staging.crossmint.com/api/2022-06-09/collections/default-solana/nfts/" + id, options)
       .then((response) => response.json())
-      .then((response) => setEstado(response))
+      .then((response) => {
+        setEstado(response);
+        if (response.onChain.status === "pending") setRetry(!retry);
+      })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, [id, retry]);
 
   console.log(estado);
 
